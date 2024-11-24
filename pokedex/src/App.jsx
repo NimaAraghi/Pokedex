@@ -1,8 +1,15 @@
 import React from 'react'
+import Header from './components/Header'
+import SideNav from './components/SideNav'
+import PokeCard from './components/PokeCard'
 
 const App = () => {
   return (
-    <div>App</div>
+    <>
+      <Header />
+      <SideNav />
+      <PokeCard />
+    </>
   )
 }
 
