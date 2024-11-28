@@ -5,7 +5,7 @@ import PokeCard from './components/PokeCard'
 
 const App = () => {
 
-  const [selectedPokemon, setSelectedPokemon] = useState(0); 
+  const [selectedPokemon, setSelectedPokemon] = useState(0);
 
   return (
     <>

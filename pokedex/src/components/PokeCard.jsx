@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { getFullPokedexNumber, getPokedexNumber } from '../utils';
 import TypeCard from './TypeCard';
 import Modal from './Modal';
+import { PokeContext } from '../context/PokeContext';
 
 
 const PokeCard = (props) => {
-    const { selectedPokemon } = props;
+    const { selectedPokemon } = useContext(PokeContext);
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [skill, setSkill] = useState(null);
