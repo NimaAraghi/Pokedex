@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { first151Pokemon, getFullPokedexNumber } from '../utils/index'
+import { PokeContext } from '../context/PokeContext';
 
-const SideNav = (props) => {
-    const {selectedPokemon, setSelectedPokemon} = props;
+const SideNav = () => {
+    const {selectedPokemon, setSelectedPokemon} = useContext(PokeContext);
     return (
         <nav>
             <div className={`header`}>
