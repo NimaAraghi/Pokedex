@@ -4,9 +4,20 @@ export const PokeContext = createContext();
 
 const PokeContextProvider = (props) => {
   const [selectedPokemon, setSelectedPokemon] = useState(0);
+  const [showSideMenu, setShowSideMenu] = useState(false);
+
+  const handleToggleMenu = () => {
+    setShowSideMenu(!showSideMenu);
+  };
+
+  const handleCloseMenu = () => {
+    setShowSideMenu(false);
+  };
 
   const value = {
     selectedPokemon, setSelectedPokemon,
+    showSideMenu, setShowSideMenu,
+    handleToggleMenu, handleCloseMenu,
   }
 
     return (

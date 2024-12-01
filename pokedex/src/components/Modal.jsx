@@ -3,7 +3,7 @@ import ReactDom from 'react-dom'
 import { PokeContext } from '../context/PokeContext';
 
 const Modal = (props) => {
-    const { children, handleCloseModal } = useContext(PokeContext);
+    const { handleCloseModal, children } = props;
     return ReactDom.createPortal(
         <div className='modal-container'>
             <button onClick={handleCloseModal} className='modal-underlay'></button>
