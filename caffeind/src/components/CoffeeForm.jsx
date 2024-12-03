@@ -4,7 +4,7 @@ import { coffeeOptions } from '../utils'
 const CoffeeForm = () => {
     const [showCoffeeTypes, setShowCoffeeTypes] = useState(false);
     const [selctedCoffee, setSelectedCoffee] = useState(null);
-    
+
     return (
         <>
             <div className="section-header">
@@ -15,27 +15,35 @@ const CoffeeForm = () => {
             <div className='coffee-grid'>
                 {coffeeOptions.slice(0, 5).map((option, optionIndex) => {
                     return (
-                        <button onClick={() => setSelectedCoffee(option.name)} className={`button-card ${option.name === selctedCoffee ? 'coffee-button-selected' : ''}`} key={optionIndex}>
+                        <button onClick={() => {
+                            setSelectedCoffee(option.name);
+                            setShowCoffeeTypes(false);
+                        }} className={`button-card ${option.name === selctedCoffee ? 'coffee-button-selected' : ''}`} key={optionIndex}>
                             <h4>{option.name}</h4>
                             <p>{option.caffeine} mg</p>
                         </button>
                     )
                 })}
-                <button onClick={() => setShowCoffeeTypes(true)} className="button-card">
+                <button onClick={() => {
+                    setShowCoffeeTypes(true);
+                    setSelectedCoffee(null);
+                }} className={`button-card ${showCoffeeTypes ? 'coffee-button-selected' : ''}`}>
                     <h4>Other</h4>
                     <p>n/a</p>
                 </button>
             </div>
-            <select name="coffee-list" id="coffee-list">
-                <option value={null}>Select type</option>
-                {coffeeOptions.map((option, optionIndex) => {
-                    return (
-                        <option value={option.name} key={optionIndex}>
-                            {option.name} ({option.caffeine}mg)
-                        </option>
-                    )
-                })}
-            </select>
+            {showCoffeeTypes && (
+                <select name="coffee-list" id="coffee-list">
+                    <option value={null}>Select type</option>
+                    {coffeeOptions.map((option, optionIndex) => {
+                        return (
+                            <option value={option.name} key={optionIndex}>
+                                {option.name} ({option.caffeine}mg)
+                            </option>
+                        )
+                    })}
+                </select>
+            )}
             <h4>Add the cost ($)</h4>
             <input className='w-full' type='number' placeholder='4.50' />
             <h4>Time since consumption</h4>
@@ -43,7 +51,7 @@ const CoffeeForm = () => {
                 <div>
                     <h6>Hours</h6>
                     <select id="hours-select">
-                        {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23].map((hour, hourIndex) => {
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23].map((hour, hourIndex) => {
                             return (
                                 <option value={hour} key={hourIndex}>{hour}</option>
                             )
